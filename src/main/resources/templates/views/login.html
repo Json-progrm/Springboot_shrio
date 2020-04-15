@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/my.css" th:href="@{/css/my.css}">
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<div class="my-container-samll my-padded-tb-large" style="max-width: 30em !important;">
+<div class="ui container">
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui my-fontcolor image header">
+            <div class="content">
+                管理后台登录
+            </div>
+        </h2>
+        <form class="ui large form" action="#" method="post" th:action="@{/login}">
+            <div class="ui">
+                <div class="field">
+                    <div class="ui left my-wide">
+                        <i class=""></i>
+                        <input type="text" name="username" placeholder="用户名" class="my-txt">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left">
+                        <i class=""></i>
+                        <input type="password" name="password" placeholder="密码" class="my-txt">
+                    </div>
+                </div>
+                <button class="ui login-btn ">登  录</button>
+            </div>
+            <div class="ui error message mini"> </div>
+                <div class="ui message  mini negative"
+                     th:if="${ not #strings.isEmpty(msg)}" th:text="${msg}">
+                    <i class="ui close icon"></i>
+                </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script>
+    $('.ui.form').form({
+        fields : {
+            username : {
+                indentifier:'username',
+                rules: [{
+                    type : 'empty',
+                    prompt : '请输入用户名',
+                }]
+            },
+            password : {
+                indentifier:'password',
+                rules: [{
+                    type : 'empty',
+                    prompt : '请输入密码',
+                }]
+            }
+        }
+    })
+</script>
+</body>
+</html>

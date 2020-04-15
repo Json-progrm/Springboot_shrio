@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #content{
+            border: 1px solid seagreen;
+            width: 1000px;
+            height: 400px;
+            clear: both;
+        }
+        #content div{
+            float: left;
+            margin: 30px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+   <div>
+       <h3> <a th:href="@{/index}">主页</a></h3>
+       <h3> <a th:href="@{/toLogin}">登录</a></h3>
+       <h3> <a th:href="@{/logout}">注销</a></h3>
+   </div>
+<div id="content" >
+    <div shiro:hasPermission="user:admin">
+        <h1>Level 1</h1>
+        <h2><a th:href="@{vip1/1}">vip1</a></h2>
+        <h2><a th:href="@{vip1/2}">vip2</a></h2>
+        <h2><a th:href="@{vip1/3}">vip3</a></h2>
+    </div>
+
+   <div shiro:hasPermission="user:vip2">
+       <h1>Level 2</h1>
+       <h2><a th:href="@{/vip2/1}">vip1</a></h2>
+       <h2><a th:href="@{/vip2/2}">vip2</a></h2>
+       <h2><a th:href="@{/vip2/3}">vip3</a></h2>
+   </div>
+</div>
+</body>
+</html>
